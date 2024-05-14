@@ -8,9 +8,9 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'inicio',
+      name: 'listado-clientes',
       component: Inicio,
-      props: { titulo: 'Listado de CLientes'}
+      props: { titulo: 'Listado de Clientes'}
     },
     {
       path: '/agregar-cliente',
