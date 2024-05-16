@@ -1,49 +1,24 @@
 {
   "clientes": [
     {
-      "id": "de57",
-      "nombre": "Daniel",
+      "id": "74b1",
+      "nombre": "otro",
       "apellido": "Vergaray",
       "email": "danielvergarayescobar@gmail.com",
-      "empresa": "Dohwa",
-      "puesto": "Ingeniero",
-      "telefono": "950-011-4344"
-    },
-    {
-      "id": "04e0",
-      "nombre": "Daniel",
-      "apellido": "vergaray",
-      "email": "danielvergarayescobar@gmail.com",
-      "empresa": "Dohwa",
-      "puesto": "Ingeniero",
-      "telefono": "950-011-4344"
-    },
-    {
-      "id": "17f8",
-      "nombre": "Luis Vergaray",
-      "apellido": "ve",
-      "email": "danielenrique_24-1@hotmail.com",
       "empresa": "hola",
       "puesto": "Ingeniero",
-      "telefono": "950-011-4344"
+      "telefono": "950-011-4344",
+      "estado": 1
     },
     {
-      "id": "f493",
+      "id": "74b2",
       "nombre": "Luis Vergaray",
       "apellido": "Vergaray",
-      "email": "danielenrique_24-1@hotmail.com",
+      "email": "danielvergarayescobar@gmail.com",
       "empresa": "hola",
       "puesto": "Ingeniero",
-      "telefono": "950-011-4344"
-    },
-    {
-      "id": "7240",
-      "nombre": "hola",
-      "apellido": "f",
-      "email": "f@gmail.com",
-      "empresa": "Dohwa",
-      "puesto": "Ingeniero",
-      "telefono": "950-011-4344"
+      "telefono": "950-011-4344",
+      "estado": 0
     }
   ]
 }

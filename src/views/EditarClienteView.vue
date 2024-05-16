@@ -1,13 +1,41 @@
 <script setup>
+import { onMounted, reactive } from 'vue'
 //import axios from "../lib/axios";
-import ClienteService from "../services/ClienteService";
 import { FormKit } from "@formkit/vue";
-import { useRouter} from "vue-router";
+import { useRouter, useRoute} from "vue-router";
+import ClienteService from "../services/ClienteService";
 import RouterLink from "../components/UI/RouterLink.vue";
 import Heading from "../components/UI/Heading.vue";
 
 
 const router = useRouter()
+const route = useRoute()
+
+const {idCliente}= route.params
+
+const formData = reactive({
+    /* nombre: '',
+    apellido:'',
+    email:'',
+    telefono:'',
+    empresa:'',
+    puesto:'' */
+})
+
+onMounted(()=>{
+    ClienteService.obtenerCliente(idCliente)
+        .then(({data}) => {
+            /* formData.nombre = data.nombre
+            formData.apellido = data.apellido
+            formData.email = data.email
+            formData.telefono = data.telefono
+            formData.empresa = data.empresa
+            formData.puesto = data.puesto */
+
+            Object.assign(formData, data)
+        })
+        .catch(error => console.log(error))
+})
 
 defineProps({
   titulo: {
@@ -15,14 +43,8 @@ defineProps({
   },
 });
 
-const handleSubmit = (data) => { /*  data es la informacion que se guarda de lo ingresado por los usuarios en los inputs */
-  data.estado=1 /* Se crea una propiedad llamada estado */
-  ClienteService.agregarCliente(data)
-      .then(respuesta => {
-        //Redireccionado al usuario
-        router.push({name: 'listado-clientes'})
-      })
-      .catch(error => console.log (error))
+const handleSubmit = (data) => {
+  
 }
 </script>
 
@@ -43,6 +65,7 @@ const handleSubmit = (data) => { /*  data es la informacion que se guarda de lo 
       submit-label="Agregar Cliente"
       incomplete-message="No se pudo agregar Cliente, intente nuevamente"
       @submit="handleSubmit" 
+      :value="formData"
       > <!-- handleSubmit permite que se guarde la informacion ingresada por los usuaris  -->
         <FormKit
         type="text"
@@ -51,6 +74,7 @@ const handleSubmit = (data) => { /*  data es la informacion que se guarda de lo 
         placeholder="Nombre del Cliente"
         validation="required"
         :validation-messages="{ required: 'El Nombre del Cliente es Obligatorio'}"
+        v-model="formData.nombre"
         />
 
         <FormKit
@@ -60,6 +84,7 @@ const handleSubmit = (data) => { /*  data es la informacion que se guarda de lo 
         placeholder="Apellido del Cliente"
         validation="required"
         :validation-messages="{ required: 'El Apellido del Cliente es Obligatorio'}"
+        v-model="formData.apellido"
         />
 
         <FormKit
@@ -69,20 +94,7 @@ const handleSubmit = (data) => { /*  data es la informacion que se guarda de lo 
         placeholder="Email del Cliente"
         validation="required|email"
         :validation-messages="{ required: 'El Email del Cliente es Obligatorio', email:'Coloca un Email valido'}"
-        />
-
-        <FormKit
-        type="text"
-        label="Empresa"
-        name="empresa"
-        placeholder="Empresa de Cliente"
-        />
-
-        <FormKit
-        type="text"
-        label="Puesto"
-        name="puesto"
-        placeholder="Puesto de Cliente"
+        v-model="formData.email"
         />
 
         <FormKit
@@ -92,7 +104,26 @@ const handleSubmit = (data) => { /*  data es la informacion que se guarda de lo 
         placeholder="Telefono: XXX-XXX-XXXX"
         validation="*matches:/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/ "
         :validation-messages="{ matches: 'El Formato no es válido'}"
+        v-model="formData.telefono"
         />
+
+        <FormKit
+        type="text"
+        label="Empresa"
+        name="empresa"
+        placeholder="Empresa de Cliente"
+        v-model="formData.empresa"
+        />
+
+        <FormKit
+        type="text"
+        label="Puesto"
+        name="puesto"
+        placeholder="Puesto de Cliente"
+        v-model="formData.puesto"
+        />
+
+       
         
       
       </FormKit>
