@@ -2,13 +2,13 @@
   "clientes": [
     {
       "id": "74b1",
-      "nombre": "otro",
+      "nombre": "Daniel",
       "apellido": "Vergaray",
       "email": "danielvergarayescobar@gmail.com",
       "empresa": "hola",
-      "puesto": "Ingeniero",
+      "puesto": "dev",
       "telefono": "950-011-4344",
-      "estado": 1
+      "estado": true
     },
     {
       "id": "74b2",
@@ -18,7 +18,7 @@
       "empresa": "hola",
       "puesto": "Ingeniero",
       "telefono": "950-011-4344",
-      "estado": 0
+      "estado": true
     }
   ]
 }

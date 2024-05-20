@@ -9,5 +9,14 @@ export default {
     },
     obtenerCliente(idCliente){
         return api.get('/clientes/' + idCliente)/* Para obtener un cliente en particular */
+    },
+    actualizarCliente (idCliente, data){
+        return api.patch('/clientes/' + idCliente, data)
+    },
+    cambiarEstado(idCliente, estado){
+        return api.patch('/clientes/' + idCliente, estado)
+    },
+    eliminarCliente(idCliente){
+        return api.delete('/clientes/' + idCliente)
     }
 }

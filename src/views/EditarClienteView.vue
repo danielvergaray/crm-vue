@@ -19,7 +19,10 @@ const formData = reactive({
     email:'',
     telefono:'',
     empresa:'',
-    puesto:'' */
+    puesto:'' 
+    
+    No es necesario definirlos porque se van a ir llenando en el .then
+    */
 })
 
 onMounted(()=>{
@@ -44,7 +47,9 @@ defineProps({
 });
 
 const handleSubmit = (data) => {
-  
+  ClienteService.actualizarCliente(idCliente, data)
+    .then(()=> router.push({name: 'listado-clientes'}))
+    .catch(error => console.log(error))
 }
 </script>
 
@@ -62,7 +67,7 @@ const handleSubmit = (data) => {
     <div class="mx-auto mt-10 bg-white shadow">
       <div class="mx-auto md:w-2/3 py-20 px-6">
       <FormKit type="form"
-      submit-label="Agregar Cliente"
+      submit-label="Guardar Cambios"
       incomplete-message="No se pudo agregar Cliente, intente nuevamente"
       @submit="handleSubmit" 
       :value="formData"
